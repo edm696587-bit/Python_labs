@@ -1,261 +1,260 @@
-
-
+# lab 2 
 def sort_numbers():
-    lst = list()
-    i = 1
-    print("Enter numbers to sort")
-    while i < 6 :
-        
-        x = int(input(f"Enter number {i}: "))
-        if x > 0 :
-            lst.append(x)
-            i += 1 
-        else:
-            print("Invalid input. Please enter a valid number.")
-            
-            
-    print("Ascending order:", sorted(lst))
-    print("Descending order:", sorted(lst, reverse=True))
-     
+lst = list()
+i = 1
+print("Enter numbers to sort")
+while i < 6 :
     
-          
+    x = int(input(f"Enter number {i}: "))
+    if x > 0 :
+        lst.append(x)
+        i += 1 
+    else:
+        print("Invalid input. Please enter a valid number.")
+        
+        
+print("Ascending order:", sorted(lst))
+print("Descending order:", sorted(lst, reverse=True))
+ 
+
+      
 
 
 def generate_sequence():
-    while True:
-        try:
-            length, start = input("Enter a length and start number like 5 10: ").split()
-            length = int(length)
-            start = int(start)
+while True:
+    try:
+        length, start = input("Enter a length and start number like 5 10: ").split()
+        length = int(length)
+        start = int(start)
 
-            if length <= 1 or start < 0 :
-                print(" Length must be > 1, start must be >= 0 and less than length.")
-                continue
+        if length <= 1 or start < 0 :
+            print(" Length must be > 1, start must be >= 0 and less than length.")
+            continue
 
-            sequence = [start + i for i in range(length)]
-            print("Generated sequence:", sequence)
-            break
+        sequence = [start + i for i in range(length)]
+        print("Generated sequence:", sequence)
+        break
 
-        except ValueError:
-            print(" Please enter two valid integers separated by a space.")
+    except ValueError:
+        print(" Please enter two valid integers separated by a space.")
 
-    
+
 
 
 def total_count_avg():
-    total = 0
-    count = 0
+total = 0
+count = 0
 
-    while True:
-        x = input("Enter a number (or 'done' to finish): ")
-        if x.lower() == "done":
-            break
-        try:
-            num = float(x)   
-            total += num
-            count += 1
-        except ValueError:
-            print("Invalid input, please enter a number or 'done'.")
+while True:
+    x = input("Enter a number (or 'done' to finish): ")
+    if x.lower() == "done":
+        break
+    try:
+        num = float(x)   
+        total += num
+        count += 1
+    except ValueError:
+        print("Invalid input, please enter a number or 'done'.")
 
-    if count > 0:
-        avg = total / count
-    else:
-        avg = 0
+if count > 0:
+    avg = total / count
+else:
+    avg = 0
 
-    print("Sum of valid numbers =", total)
-    print("Count of valid entries =", count)
-    print("Average =", avg)
+print("Sum of valid numbers =", total)
+print("Count of valid entries =", count)
+print("Average =", avg)
+    
         
-            
-         
+     
 
-        
+    
 
 def unique_sorted():
-    while True:
-        raw_input = []
-        try:
-            raw_input = input("Enter a list of numbers like this: 1 2 3 5\n> ")
-            lst = list(map(int, raw_input.split()))   
-            lst = sorted(set(lst))                    
-            print("Your unique and sorted list =>", lst)
-            break
-        except ValueError:
-            print(" Invalid input! Please enter only numeric values separated by spaces.")
+while True:
+    raw_input = []
+    try:
+        raw_input = input("Enter a list of numbers like this: 1 2 3 5\n> ")
+        lst = list(map(int, raw_input.split()))   
+        lst = sorted(set(lst))                    
+        print("Your unique and sorted list =>", lst)
+        break
+    except ValueError:
+        print(" Invalid input! Please enter only numeric values separated by spaces.")
 
 
 
 
 def value_counter():
-    sentence = input("Enter a sentence: ")
-    words = sentence.split()
-    word_count = {}
+sentence = input("Enter a sentence: ")
+words = sentence.split()
+word_count = {}
 
-    for word in words:
-        word = word.lower()  # Optional: make the count case-insensitive
-        if word in word_count:
-            word_count[word] += 1
-        else:
-            word_count[word] = 1
+for word in words:
+    word = word.lower()  # Optional: make the count case-insensitive
+    if word in word_count:
+        word_count[word] += 1
+    else:
+        word_count[word] = 1
 
-    print("Word counts:")
-    for word, count in word_count.items():
-        print(f"{word}: {count}")
+print("Word counts:")
+for word, count in word_count.items():
+    print(f"{word}: {count}")
 
 def gradebook():
-    students = {}
-    i = 1
-    while i <= 5:
-        name = input(f"Enter the name of student {i}: ").strip()
-        if not name.replace(" ", "").isalpha():  
-            print(" Invalid name. Please enter a valid alphabetic name.")
+students = {}
+i = 1
+while i <= 5:
+    name = input(f"Enter the name of student {i}: ").strip()
+    if not name.replace(" ", "").isalpha():  
+        print(" Invalid name. Please enter a valid alphabetic name.")
+        continue
+
+    try:
+        score = float(input(f"Enter the score for {name} (0-100): "))
+        if score < 0 :
+            print(" Score must > 0.")
             continue
+    except ValueError:
+        print("Invalid score. Please enter a numeric value.")
+        continue
 
-        try:
-            score = float(input(f"Enter the score for {name} (0-100): "))
-            if score < 0 :
-                print(" Score must > 0.")
-                continue
-        except ValueError:
-            print("Invalid score. Please enter a numeric value.")
-            continue
+    students[name] = score
+    i += 1
 
-        students[name] = score
-        i += 1
+if students:
+    scores = list(students.values())
+    highest = max(scores)
+    lowest = min(scores)
+    average = sum(scores) / len(scores)
 
-    if students:
-        scores = list(students.values())
-        highest = max(scores)
-        lowest = min(scores)
-        average = sum(scores) / len(scores)
+    print("\n Gradebook Results:")
+    print(f"Highest score: {highest}")
+    print(f"Lowest score: {lowest}")
+    print(f"Average score: {average:.2f}")
+else:
+    print(" No valid student data entered.")
 
-        print("\n Gradebook Results:")
-        print(f"Highest score: {highest}")
-        print(f"Lowest score: {lowest}")
-        print(f"Average score: {average:.2f}")
-    else:
-        print(" No valid student data entered.")
+
+        
+
 
     
-            
-
-
-        
 def shopping_cart():
-    cart = {}
-    while True:
-        print(
-            "1 to add item\n2 to remove item\n3 to view cart\n4 to checkout\n5 to exit"
-        )
-        choice = input("Choose an option numberbetween 1 5 : ")
-        if choice == "1":
-            item = input("Enter item nameto add : ")
-            if item in cart:
-                print("the item allready exists ")
-                       
-            else:
-                try:
-                    price = int(input("Enter the price: "))
-                    cart[item] = price
-                except:
-                    print("price not valid")
-        elif choice == "2":
-            if cart:
-                try:
-                    
-                    item = input("Enter item name to remove: ")
-                    cart.pop(item)
-                except:
-                    print("invalid item name")    
-            else:
-                print("Cart is empty, press 1 to add items.")
-        elif choice == "3":
-            if cart:
-                print("Shopping Cart:")
-                for item, price in cart.items():
-                    print(f"Item: {item}, Price: {price}")
-            else:
-                print("Cart is empty.")
-        elif choice == "4":
-            total = sum(cart.values())
-            print(f"Total checkout amount: {total}")
-        elif choice == "5":
-            break
-        
-
-        
-def number_guessing_game():
-    import random
-
-    number_to_guess = random.randint(1, 20)
-    attempts = 0
-    while True:
-        guess = int(input("Guess a number between 1 and 20: "))
-        attempts += 1
-        if guess < number_to_guess:
-            print("Too Low!")
-        elif guess > number_to_guess:
-            print("Too High!")
-
-        elif guess == number_to_guess:
-            print(
-                f"Congratulations! You've guessed the number {number_to_guess} in {attempts} attempts."
-            )
-            break
+cart = {}
+while True:
+    print(
+        "1 to add item\n2 to remove item\n3 to view cart\n4 to checkout\n5 to exit"
+    )
+    choice = input("Choose an option numberbetween 1 5 : ")
+    if choice == "1":
+        item = input("Enter item nameto add : ")
+        if item in cart:
+            print("the item allready exists ")
+                   
         else:
-            print("try again!!!")
-        
+            try:
+                price = int(input("Enter the price: "))
+                cart[item] = price
+            except:
+                print("price not valid")
+    elif choice == "2":
+        if cart:
+            try:
+                
+                item = input("Enter item name to remove: ")
+                cart.pop(item)
+            except:
+                print("invalid item name")    
+        else:
+            print("Cart is empty, press 1 to add items.")
+    elif choice == "3":
+        if cart:
+            print("Shopping Cart:")
+            for item, price in cart.items():
+                print(f"Item: {item}, Price: {price}")
+        else:
+            print("Cart is empty.")
+    elif choice == "4":
+        total = sum(cart.values())
+        print(f"Total checkout amount: {total}")
+    elif choice == "5":
+        break
+    
+
+    
+def number_guessing_game():
+import random
+
+number_to_guess = random.randint(1, 20)
+attempts = 0
+while True:
+    guess = int(input("Guess a number between 1 and 20: "))
+    attempts += 1
+    if guess < number_to_guess:
+        print("Too Low!")
+    elif guess > number_to_guess:
+        print("Too High!")
+
+    elif guess == number_to_guess:
+        print(
+            f"Congratulations! You've guessed the number {number_to_guess} in {attempts} attempts."
+        )
+        break
+    else:
+        print("try again!!!")
+    
 
 def main_menu():
-    while True:
-        print("Welcome to the Main Menu")
-        print("1. Sort a list asc or desc")
-        print("2. Generate sequence of numbers")
-        print("3. Get summison of vaild number input by you")
-        print("4. remove duplicates and sort list")
-        print("5. vlaue_counter of sequence items ")
-        print("6. highest ,lowest and avg of scores")
-        print("7. shopping cart")
-        print("8. number guessing game")
-        print("9.to exit ")
-        choice = int(input("Please select an option number between (1 : 9) "))
-        if choice not in range(1, 10):
-            print("Invalid choice. Please select a number between 1 and 9.")
-            return main_menu()
-        return main(choice)
+while True:
+    print("Welcome to the Main Menu")
+    print("1. Sort a list asc or desc")
+    print("2. Generate sequence of numbers")
+    print("3. Get summison of vaild number input by you")
+    print("4. remove duplicates and sort list")
+    print("5. vlaue_counter of sequence items ")
+    print("6. highest ,lowest and avg of scores")
+    print("7. shopping cart")
+    print("8. number guessing game")
+    print("9.to exit ")
+    choice = int(input("Please select an option number between (1 : 9) "))
+    if choice not in range(1, 10):
+        print("Invalid choice. Please select a number between 1 and 9.")
+        return main_menu()
+    return main(choice)
 
 
 
 def main(choice):
-    if choice == 1:
-        sort_numbers()
-        main_menu()
-    elif choice == 2:
-        generate_sequence()
-        main_menu()
-    elif choice == 3:
-        total_count_avg()
-        main_menu()
-    elif choice == 4:
-        unique_sorted()
-        main_menu()
-    elif choice == 5:
-        value_counter()
-        main_menu()    
-        
-    elif choice == 6:
-        gradebook()
-        main_menu()
-    elif choice == 7:
-        shopping_cart()
-        main_menu()
-    elif choice == 8:
-        number_guessing_game()
-        main_menu()
-    elif choice == 9:
-        
-        exit                            
-        
+if choice == 1:
+    sort_numbers()
+    main_menu()
+elif choice == 2:
+    generate_sequence()
+    main_menu()
+elif choice == 3:
+    total_count_avg()
+    main_menu()
+elif choice == 4:
+    unique_sorted()
+    main_menu()
+elif choice == 5:
+    value_counter()
+    main_menu()    
+    
+elif choice == 6:
+    gradebook()
+    main_menu()
+elif choice == 7:
+    shopping_cart()
+    main_menu()
+elif choice == 8:
+    number_guessing_game()
+    main_menu()
+elif choice == 9:
+    
+    exit                            
+    
 
 
 
