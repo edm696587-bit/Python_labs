@@ -1,0 +1,8 @@
+math_task executed in 0.1164 seconds
+regex_task executed in 0.0137 seconds
+math_task executed in 0.1856 seconds
+regex_task executed in 0.0000 seconds
+run_task executed in 9.2038 seconds
+run_task executed in 0.0000 seconds
+math_task executed in 0.1535 seconds
+regex_task executed in 0.0000 seconds

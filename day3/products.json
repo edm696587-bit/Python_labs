@@ -1,0 +1,17 @@
+[
+    {
+        "product": "mmm",
+        "price": 15.0,
+        "discounted": 13.5
+    },
+    {
+        "product": "bbb",
+        "price": 5.0,
+        "discounted": 4.5
+    },
+    {
+        "product": "ccc",
+        "price": 11.0,
+        "discounted": 9.9
+    }
+]
